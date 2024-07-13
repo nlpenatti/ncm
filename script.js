@@ -1,52 +1,45 @@
-const inputArquivo = document.getElementById('arquivo-xml');
-const btnProcessar = document.getElementById('btn-processar');
-const resultadosEiframe = document.getElementById('resultados-e-iframe');
-
-btnProcessar.addEventListener('click', () => {
-    const arquivo = inputArquivo.files[0];
-
-    if (arquivo) {
+document.getElementById('xmlInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const invalidItem = document.getElementById('invalidItemInput').value;
+    if (file) {
         const reader = new FileReader();
+        reader.onload = function(e) {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(e.target.result, "text/xml");
+            const items = xmlDoc.getElementsByTagName('det');
+            const tableBody = document.getElementById('itemsTable').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = '';  // Limpa a tabela antes de inserir novos dados
 
-        reader.onload = (e) => {
-            const xml = e.target.result;
-            processarXML(xml);
+            for (let item of items) {
+                const nItem = item.getAttribute('nItem');
+                const cProd = item.getElementsByTagName('cProd')[0].textContent;
+                const xProd = item.getElementsByTagName('xProd')[0].textContent;
+                const ncm = item.getElementsByTagName('NCM')[0].textContent;
+                const cfop = item.getElementsByTagName('CFOP')[0].textContent;
+                const qCom = item.getElementsByTagName('qCom')[0].textContent;
+                const vUnCom = item.getElementsByTagName('vUnCom')[0].textContent;
+                const vProd = item.getElementsByTagName('vProd')[0].textContent;
+
+                const row = document.createElement('tr');
+                if (invalidItem && nItem === invalidItem) {
+                    row.classList.add('invalid-item');
+                }
+
+                row.innerHTML = `
+                    <td>${nItem}</td>
+                    <td>${cProd}</td>
+                    <td>${xProd}</td>
+                    <td>${ncm}</td>
+                    <td>${cfop}</td>
+                    <td>${qCom}</td>
+                    <td>${vUnCom}</td>
+                    <td>${vProd}</td>
+                `;
+                tableBody.appendChild(row);
+            }
+
+            document.querySelector('.main-content').classList.remove('hidden');  // Exibe o conteúdo principal
         };
-
-        reader.readAsText(arquivo);
-    } else {
-        alert('Selecione um arquivo XML');
+        reader.readAsText(file);
     }
 });
-
-function processarXML(xml) {
-    let contadorNCMs = 0;
-    let resultado = "";
-
-    try {
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xml, "text/xml");
-
-        const ncms = xmlDoc.getElementsByTagName("NCM");
-
-        for (let i = 0; i < ncms.length; i++) {
-            const ncm = ncms[i].textContent;
-            contadorNCMs++;
-            resultado += `${contadorNCMs}. ${ncm}\n`; 
-        }
-
-        resultado += `\nTotal de NCMs encontrados: ${contadorNCMs}`;
-        document.getElementById('resultado-texto').textContent = resultado;
-        
-        // Exibir o elemento após o processamento do XML
-        resultadosEiframe.style.display = 'block';
-
-        // Exibir a tag <hr> após o processamento do XML
-        document.getElementById('linha-horizontal').style.display = 'block';
-    } catch (e) {
-        alert('Erro ao processar o XML:', e.message);
-    }
-};
-
-
-
