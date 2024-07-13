@@ -166,9 +166,3 @@ iframe {
   border-radius: 10px;  /* Borda arredondada do "polegar" */
   border: 3px solid #1E1E1E;  /* Cor da borda do "polegar" */
 }
-
-/* Personalizando a barra de rolagem para o Firefox */
-* {
-  scrollbar-width: thin;  /* Define a largura da barra de rolagem */
-  scrollbar-color: #2b2828 #1E1E1E;  /* Cor do "polegar" e da trilha */
-}
