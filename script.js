@@ -3,6 +3,9 @@ document.getElementById('xmlInput').addEventListener('change', function(event) {
     const invalidItem = document.getElementById('invalidItemInput').value;
     if (file) {
         const reader = new FileReader();
+        reader.onloadstart = function() {
+            document.getElementById('loadingModal').classList.remove('hidden');
+        };
         reader.onload = function(e) {
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(e.target.result, "text/xml");
@@ -38,7 +41,11 @@ document.getElementById('xmlInput').addEventListener('change', function(event) {
                 tableBody.appendChild(row);
             }
 
-            document.querySelector('.main-content').classList.remove('hidden');  // Exibe o conteúdo principal
+            // Adiciona um atraso artificial de 2 segundos antes de esconder o modal de carregamento
+            setTimeout(function() {
+                document.getElementById('loadingModal').classList.add('hidden');
+                document.querySelector('.main-content').classList.remove('hidden');  // Exibe o conteúdo principal
+            }, 2000);
         };
         reader.readAsText(file);
     }
