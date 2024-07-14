@@ -12,10 +12,12 @@
 </head>
 <body>
     <div class="sidebar">
+        <img src="pesquisa.png" alt="logo">
         <h2>Validador de NCM</h2>
-        <label for="invalidItemInput">O ERP mencionou o item que está com NCM inválido? Informe abaixo</label><br>
+        <br>
+        <label for="invalidItemInput">1. Informe o número do item com NCM inválido</label><br>
         <input type="number" id="invalidItemInput" placeholder="Número do Item">
-        <p>Insira seu XML abaixo</p>
+        <p style="text-align: justify; ">2. Insira o XML da nota rejeitada abaixo</p>
         <form class="file-upload-form">
             <label for="xmlInput" class="file-upload-label">
                 <div class="file-upload-design">
@@ -51,7 +53,8 @@
                 </tbody>
             </table>
             <div id="validationMessage"></div>
-            <p>Deseja validar seu NCM? <strong><a href="https://www.freenfe.com.br/consulta-ncm" target="_blank">Clique aqui</a></strong></p> 
+            <p>Deseja validar seu NCM? <strong><a href="https://www.freenfe.com.br/consulta-ncm" target="_blank" rel="noopener">Clique aqui</a>
+            </strong></p> 
         </div>
     </div>
     <div id="loadingModal" class="loading-modal hidden">
