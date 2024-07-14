@@ -12,12 +12,14 @@
         rel="stylesheet">
     <link rel="shortcut icon" href="pesquisa.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
     <div class="sidebar">
         <img src="pesquisa.png" alt="logo">
-        <h2>Validador de NCM</h2>
+        <h2>Validador de NCM <i class='bx bxs-analyse'></i></h2>
         <br>
         <label for="invalidItemInput">1. Informe o número do item com NCM inválido</label><br>
         <input type="number" id="invalidItemInput" placeholder="Número do Item">
@@ -39,7 +41,7 @@
         </form>
     </div>
     <div class="main-content hidden">
-        <h1>Informações dos Itens</h1>
+        <h1><box-icon name='objects-horizontal-left' type='solid' flip='vertical' color='#f3f3f3' ></box-icon> Informações dos Itens </h1>
         <div class="content">
             <table id="itemsTable">
                 <thead>
@@ -52,15 +54,15 @@
                         <th>Quantidade</th>
                         <th>Valor Unitário</th>
                         <th>Valor Total</th>
-                    </tr>
+                    </tr>                    
                 </thead>
                 <tbody>
-                    <!-- Dados serão inseridos aqui -->
+                    <!-- Dados dinâmicos-->
                 </tbody>
             </table>
             <div id="validationMessage"></div>
             <p>Deseja validar seu NCM? <strong><a href="https://www.freenfe.com.br/consulta-ncm" target="_blank"
-                        rel="noopener">Clique aqui</a>
+                        rel="noopener" style="color: aquamarine;">Clique aqui</a>
                 </strong></p>
         </div>
     </div>
@@ -68,18 +70,11 @@
         <div class="loader"></div>
         <div class="loading-text">
             <p>Lendo o XML...</p>
-            <p>Coletando os itens...</p>
             <p>Lendo os NCMs...</p>
         </div>
     </div>
-    <button id="clearXmlDataButtonIcon" class="clear-button-icon hidden" onclick="clearXmlData()">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
-            <path
-                d="M19.7 4.3c-0.4-0.4-1-0.4-1.4 0L12 10.6L5.7 4.3c-0.4-0.4-1-0.4-1.4 0c-0.4 0.4-0.4 1 0 1.4L10.6 12L4.3 18.3c-0.4 0.4-0.4 1 0 1.4c0.2 0.2 0.5 0.3 0.7 0.3s0.5-0.1 0.7-0.3L12 13.4l6.3 6.3c0.2 0.2 0.5 0.3 0.7 0.3s0.5-0.1 0.7-0.3c0.4-0.4 0.4-1 0-1.4L13.4 12l6.3-6.3c0.4-0.4 0.4-1 0-1.4z">
-            </path>
-        </svg>
+    <button id="clearXmlDataButtonIcon" class="clear-button-icon hidden" onclick="clearXmlData()"><i class='bx bxs-trash-alt bx-flip-horizontal' style='color:#f72c2f'></i>
     </button>
     <script src="script.js"></script>
 </body>
-
 </html>

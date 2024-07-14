@@ -78,6 +78,14 @@ body {
 
 .content {
   overflow-y: auto;
+  text-align: center;
+  justify-content: justify;
+}
+
+i {
+  width: 10px;
+  justify-content: center;
+  text-align: center;
 }
 
 table {
