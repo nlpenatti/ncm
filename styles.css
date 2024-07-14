@@ -3,14 +3,14 @@ body {
   height: 100vh;
   margin: 0;
   font-family: 'JetBrains Mono', monospace;
-  background-color: #121212;
+  background-color: #212121;
   color: #E0E0E0;
 }
 
 .sidebar {
   width: 15%;
   padding: 20px;
-  background-color: #1E1E1E;
+  background-color: #171717;
   color: #E0E0E0;
   display: flex;
   flex-direction: column;
