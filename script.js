@@ -1,17 +1,17 @@
-document.getElementById('xmlInput').addEventListener('change', function(event) {
+document.getElementById('xmlInput').addEventListener('change', function (event) {
     const file = event.target.files[0];
     const invalidItem = document.getElementById('invalidItemInput').value;
     if (file) {
         const reader = new FileReader();
-        reader.onloadstart = function() {
+        reader.onloadstart = function () {
             document.getElementById('loadingModal').classList.remove('hidden');
         };
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(e.target.result, "text/xml");
             const items = xmlDoc.getElementsByTagName('det');
             const tableBody = document.getElementById('itemsTable').getElementsByTagName('tbody')[0];
-            tableBody.innerHTML = '';  // Limpa a tabela antes de inserir novos dados
+            tableBody.innerHTML = ''; // Limpa a tabela antes de inserir novos dados
 
             for (let item of items) {
                 const nItem = item.getAttribute('nItem');
@@ -41,10 +41,9 @@ document.getElementById('xmlInput').addEventListener('change', function(event) {
                 tableBody.appendChild(row);
             }
 
-            // Adiciona um atraso artificial de 2 segundos antes de esconder o modal de carregamento
-            setTimeout(function() {
+            setTimeout(function () {
                 document.getElementById('loadingModal').classList.add('hidden');
-                document.querySelector('.main-content').classList.remove('hidden');  // Exibe o conteúdo principal
+                document.querySelector('.main-content').classList.remove('hidden'); // Exibe o conteúdo principal
             }, 2000);
         };
         reader.readAsText(file);

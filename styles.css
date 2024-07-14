@@ -20,16 +20,16 @@ body {
   top: 0;
   left: 0;
   overflow-y: auto;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 
-  .sidebar img {
-    display: block; /* Para garantir que a imagem seja tratada como um bloco */
-    margin: 0 auto; /* Margens automáticas horizontalmente para centralização */
-    width: 20%; /* Ajuste conforme necessário */
-  }
-  
+.sidebar img {
+  display: block;
+  margin: 0 auto;
+  width: 20%;
+}
+
 
 .sidebar h2 {
   margin-top: 0;
@@ -43,7 +43,7 @@ body {
 .sidebar label {
   margin-top: 10px;
   color: whitesmoke;
-  text-align:justify;
+  text-align: justify;
 }
 
 .sidebar input[type="number"] {
@@ -86,11 +86,14 @@ table {
   margin-bottom: 20px;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid #424242;
 }
 
-th, td {
+th,
+td {
   padding: 10px;
   text-align: left;
   color: #E0E0E0;
@@ -166,12 +169,15 @@ iframe {
 
 /* Personalizando a barra de rolagem para navegadores WebKit (Chrome, Safari) */
 ::-webkit-scrollbar {
-  width: 12px;  /* Largura da barra de rolagem */
+  width: 12px;
+  /* Largura da barra de rolagem */
 }
 
 ::-webkit-scrollbar-track {
-  background: #1E1E1E;  /* Cor da trilha da barra de rolagem */
-  border-radius: 10px;  /* Borda arredondada da trilha */
+  background: #1E1E1E;
+  /* Cor da trilha da barra de rolagem */
+  border-radius: 10px;
+  /* Borda arredondada da trilha */
 }
 
 /* Modal de carregamento */
@@ -229,9 +235,11 @@ iframe {
   0% {
     transform: rotate(0deg) scale(0.8);
   }
+
   50% {
     transform: rotate(360deg) scale(1.2);
   }
+
   100% {
     transform: rotate(720deg) scale(0.8);
   }
@@ -241,11 +249,13 @@ iframe {
   0% {
     box-shadow: 30px 0 0 #f8b334;
   }
+
   50% {
     box-shadow: 0 0 0 #f8b334;
     margin-bottom: 0;
-    transform: translate(15px,15px);
+    transform: translate(15px, 15px);
   }
+
   100% {
     box-shadow: 30px 0 0 #f8b334;
     margin-bottom: 10px;
@@ -256,11 +266,13 @@ iframe {
   0% {
     box-shadow: 30px 0 0 #97bf0d;
   }
+
   50% {
     box-shadow: 0 0 0 #97bf0d;
     margin-top: -20px;
-    transform: translate(15px,15px);
+    transform: translate(15px, 15px);
   }
+
   100% {
     box-shadow: 30px 0 0 #97bf0d;
     margin-top: 0;
