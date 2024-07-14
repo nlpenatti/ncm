@@ -1,10 +1,21 @@
 document.getElementById('xmlInput').addEventListener('change', function (event) {
     const file = event.target.files[0];
     const invalidItem = document.getElementById('invalidItemInput').value;
+    
+    // Função para exibir o conteúdo principal após o countdown
+    function showMainContent() {
+        setTimeout(function () {
+            document.getElementById('loadingModal').classList.add('hidden');
+            document.querySelector('.main-content').classList.remove('hidden');
+            document.getElementById('clearXmlDataButtonIcon').classList.remove('hidden');
+        }, 2000);
+    }
+
     if (file) {
         const reader = new FileReader();
         reader.onloadstart = function () {
             document.getElementById('loadingModal').classList.remove('hidden');
+            document.getElementById('clearXmlDataButtonIcon').classList.add('hidden'); // Esconde o botão com ícone ao carregar novo XML
         };
         reader.onload = function (e) {
             const parser = new DOMParser();
@@ -41,11 +52,26 @@ document.getElementById('xmlInput').addEventListener('change', function (event) 
                 tableBody.appendChild(row);
             }
 
-            setTimeout(function () {
-                document.getElementById('loadingModal').classList.add('hidden');
-                document.querySelector('.main-content').classList.remove('hidden'); // Exibe o conteúdo principal
-            }, 2000);
+            // Exibe o conteúdo principal após o countdown
+            showMainContent();
         };
         reader.readAsText(file);
+    } else {
+        // Se nenhum arquivo for selecionado, apenas exibe o conteúdo principal após o countdown
+        showMainContent();
     }
+});
+
+// Função para limpar as informações do XML
+function clearXmlData() {
+    document.getElementById('itemsTable').getElementsByTagName('tbody')[0].innerHTML = '';
+    document.getElementById('invalidItemInput').value = '';
+    document.querySelector('.main-content').classList.add('hidden');
+    document.getElementById('loadingModal').classList.add('hidden');
+    document.getElementById('clearXmlDataButtonIcon').classList.add('hidden'); // Esconde o botão com ícone ao limpar o XML
+}
+
+// Adiciona evento de clique ao botão de limpar
+document.getElementById('clearXmlDataButton').addEventListener('click', function () {
+    clearXmlData();
 });
