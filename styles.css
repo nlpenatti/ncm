@@ -3,14 +3,14 @@ body {
   height: 100vh;
   margin: 0;
   font-family: 'JetBrains Mono', monospace;
-  background-color: #F0FFF4;
+  background-color: #212121;
   color: #E0E0E0;
 }
 
 .sidebar {
   width: 15%;
   padding: 20px;
-  background-color: #3AA88A;
+  background-color: #171717;
   color: #E0E0E0;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@ body {
   top: 0;
   left: 0;
   overflow-y: auto;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.212);
 }
 
 
@@ -118,7 +118,7 @@ tbody tr:hover {
 }
 
 .invalid-item {
-  background-color: #f94f4f30;
+  background-color: #f94f4f52;
 }
 
 iframe {
